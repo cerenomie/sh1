@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: aaubin <aaubin@student.42.fr>              +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2013/11/26 22:57:40 by aaubin            #+#    #+#              #
-#    Updated: 2013/12/27 05:31:40 by aaubin           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 CC=clang
 LKFLAGS=-Wall -Wextra -pedantic -I./libft/includes -Werror -L./libft -lft
 CFLAGS=-Wall -Wextra -pedantic -I./libft/includes
