@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_cd.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fteuber <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/10/10 15:22:30 by fteuber           #+#    #+#             */
+/*   Updated: 2014/10/11 14:13:50 by fteuber          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_sh.h"
 
-int		ft_cd(char *a, t_params *p)
+int				ft_cd(char *a, t_params *p)
 {
 	char		*path;
 
@@ -16,10 +28,10 @@ int		ft_cd(char *a, t_params *p)
 		return (0);
 }
 
-char		*ft_get_good_path(char *exe, t_params *p)
+char			*ft_get_good_path(char *exe, t_params *p)
 {
 	char		**sp;
-	int		counter;
+	int			counter;
 	char		*ret;
 
 	ret = NULL;

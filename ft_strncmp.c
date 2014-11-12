@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fteuber <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/10/10 16:40:36 by fteuber           #+#    #+#             */
-/*   Updated: 2014/10/12 16:59:13 by fteuber          ###   ########.fr       */
+/*   Created: 2014/10/10 15:35:17 by fteuber           #+#    #+#             */
+/*   Updated: 2014/10/10 15:35:48 by fteuber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "ft_sh.h"
 
-# include "ft_sh.h"
-# include <stdlib.h>
-# include <fcntl.h>
-# include <unistd.h>
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	unsigned int	i;
+	int				diff;
 
-# define BUFF_SIZE 10
-
-void	ft_add_line(char **line, char **buf, long len);
-void	ft_loop(int const *fd, char **line, char **buf, long *res);
-int		get_next_line(int const fd, char **line);
-
-#endif
+	i = 0;
+	diff = 0;
+	while ((s1[i] || s2[i]) && i < n)
+	{
+		diff = s1[i] - s2[i];
+		if (diff != 0)
+			return (diff);
+		i++;
+	}
+	return (0);
+}

@@ -1,24 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fteuber <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/10/10 16:39:56 by fteuber           #+#    #+#             */
-/*   Updated: 2014/10/29 15:26:22 by fteuber          ###   ########.fr       */
+/*   Created: 2014/10/10 12:57:37 by fteuber           #+#    #+#             */
+/*   Updated: 2014/10/11 14:16:23 by fteuber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sh.h"
-#include "get_next_line.h"
 
-int					main(int ac, char **av, char **env)
+char				*ft_strtrim(char const *s)
 {
-	int				*fd;
-	t_params		*p;
+	int				d;
+	int				trim_start;
+	unsigned int	c;
+	char			*new_str;
 
-	p = ft_get_params(ac, av, env);
-	ft_loop(env, fd, av, p);
-	return (0);
+	d = 0;
+	c = 0;
+	trim_start = 0;
+	new_str = ft_strnew (ft_strlen (s));
+	while (c < ft_strlen (s))
+	{
+		if (!trim_start && ft_isblank (s[c]))
+			c++;
+		else
+		{
+			trim_start = 1;
+			new_str[d++] = s[c++];
+		}
+	}
+	while (ft_isblank (new_str[--d]))
+		new_str[d] = '\0';
+	return (new_str);
 }

@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strpos.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fteuber <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/10/10 16:40:36 by fteuber           #+#    #+#             */
-/*   Updated: 2014/10/12 16:59:13 by fteuber          ###   ########.fr       */
+/*   Created: 2014/10/10 12:52:19 by fteuber           #+#    #+#             */
+/*   Updated: 2014/10/10 15:37:59 by fteuber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "ft_sh.h"
 
-# include "ft_sh.h"
-# include <stdlib.h>
-# include <fcntl.h>
-# include <unistd.h>
+int			ft_strpos(const char *s1, const char *s2)
+{
+	char	*s1_;
+	char	*s2_;
+	int		l;
+	int		counter;
 
-# define BUFF_SIZE 10
-
-void	ft_add_line(char **line, char **buf, long len);
-void	ft_loop(int const *fd, char **line, char **buf, long *res);
-int		get_next_line(int const fd, char **line);
-
-#endif
+	counter = 0;
+	s1_ = (char *)s1;
+	s2_ = (char *)s2;
+	l = ft_strlen(s2_);
+	while (*s1_ != '\0')
+	{
+		if (ft_strncmp(s1_, s2_, l) == 0)
+			return (counter);
+		s1_++;
+		counter++;
+	}
+	return (counter);
+}

@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fteuber <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/10/10 16:40:36 by fteuber           #+#    #+#             */
-/*   Updated: 2014/10/12 16:59:13 by fteuber          ###   ########.fr       */
+/*   Created: 2014/10/10 15:35:57 by fteuber           #+#    #+#             */
+/*   Updated: 2014/10/10 15:36:06 by fteuber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "ft_sh.h"
 
-# include "ft_sh.h"
-# include <stdlib.h>
-# include <fcntl.h>
-# include <unistd.h>
+int		ft_strnequ(char const *s1, char const *s2, size_t n)
+{
+	int	i;
 
-# define BUFF_SIZE 10
-
-void	ft_add_line(char **line, char **buf, long len);
-void	ft_loop(int const *fd, char **line, char **buf, long *res);
-int		get_next_line(int const fd, char **line);
-
-#endif
+	i = 0;
+	if ((s1 != NULL && s2 != NULL))
+	{
+		while (s1[i] == s2[i])
+		{
+			if ((s1[i] == '\0' && s2[i] == '\0') || n == 1)
+				return (1);
+			i++;
+			n--;
+		}
+	}
+	return (0);
+}

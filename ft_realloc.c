@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fteuber <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/10/10 16:39:56 by fteuber           #+#    #+#             */
-/*   Updated: 2014/10/29 15:26:22 by fteuber          ###   ########.fr       */
+/*   Created: 2014/10/10 11:28:52 by fteuber           #+#    #+#             */
+/*   Updated: 2014/10/10 15:27:39 by fteuber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sh.h"
-#include "get_next_line.h"
 
-int					main(int ac, char **av, char **env)
+void		*ft_realloc(void *ptr, size_t old, size_t size)
 {
-	int				*fd;
-	t_params		*p;
+	void	*new;
 
-	p = ft_get_params(ac, av, env);
-	ft_loop(env, fd, av, p);
-	return (0);
+	if (ptr == NULL)
+		return (NULL);
+	if (size == 0)
+		new = (void *)ft_memalloc(sizeof(char));
+	else
+		new = (void *)ft_memalloc(size);
+	if (new == NULL)
+		return (NULL);
+	ft_bzero(new, (size) ? size : sizeof(char));
+	if (old > size)
+		ft_memcpy(new, ptr, (size) ? size : sizeof(char));
+	else
+		ft_memcpy(new, ptr, old);
+	ft_memdel((void *)&ptr);
+	return (new);
 }

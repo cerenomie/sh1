@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fteuber <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/10/10 16:40:36 by fteuber           #+#    #+#             */
-/*   Updated: 2014/10/12 16:59:13 by fteuber          ###   ########.fr       */
+/*   Created: 2014/10/10 15:32:02 by fteuber           #+#    #+#             */
+/*   Updated: 2014/10/10 15:32:42 by fteuber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "ft_sh.h"
 
-# include "ft_sh.h"
-# include <stdlib.h>
-# include <fcntl.h>
-# include <unistd.h>
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*newstr;
 
-# define BUFF_SIZE 10
-
-void	ft_add_line(char **line, char **buf, long len);
-void	ft_loop(int const *fd, char **line, char **buf, long *res);
-int		get_next_line(int const fd, char **line);
-
-#endif
+	newstr = NULL;
+	if (s1 != NULL && s2 != NULL)
+	{
+		newstr = ft_strnew(ft_strlen(s1) + ft_strlen(s2));
+		ft_strcat(newstr, s1);
+		ft_strcat(newstr, s2);
+	}
+	return (newstr);
+}

@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fteuber <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/10/10 16:40:36 by fteuber           #+#    #+#             */
-/*   Updated: 2014/10/12 16:59:13 by fteuber          ###   ########.fr       */
+/*   Created: 2014/10/10 15:33:41 by fteuber           #+#    #+#             */
+/*   Updated: 2014/10/10 15:35:09 by fteuber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include <string.h>
 
-# include "ft_sh.h"
-# include <stdlib.h>
-# include <fcntl.h>
-# include <unistd.h>
+char	*ft_strncat(char *s1, const char *s2, size_t n)
+{
+	int		i;
+	size_t	j;
 
-# define BUFF_SIZE 10
-
-void	ft_add_line(char **line, char **buf, long len);
-void	ft_loop(int const *fd, char **line, char **buf, long *res);
-int		get_next_line(int const fd, char **line);
-
-#endif
+	i = 0;
+	j = 0;
+	while (s1[i])
+		i++;
+	while (s2[j] && j < n)
+	{
+		s1[i + j] = s2[j];
+		j++;
+	}
+	s1[i + j] = '\0';
+	return (s1);
+}

@@ -1,51 +1,45 @@
-CC=clang
-LKFLAGS=-Wall -Wextra -pedantic -I./libft/includes -Werror -L./libft -lft
-CFLAGS=-Wall -Wextra -pedantic -I./libft/includes
-LDFLAGS=-g
-NAME=ft_minishell1
-SRC=ft_cd.c\
-	ft_envutils.c\
-	ft_shbin.c\
-	ft_shenv.c\
-	ft_shprint.c\
-	ft_shread.c\
-	ft_shaccess.c\
-	ft_sherror.c\
-	get_next_line.c\
-	main.c
-NOM=$(basename $(SRC))
-OBJ=$(addsuffix .o, $(NOM))
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: fteuber <fteuber@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2013/11/19 13:44:31 by fteuber           #+#    #+#              #
+#    Updated: 2014/10/12 16:38:53 by fteuber          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+NAME =	ft_minishell1
 
-all: makelib normal
+SRCS =	ft_access.c		ft_bin.c		ft_cd.c				ft_env.c\
+		ft_error.c		ft_print.c		ft_read.c			ft_unsetenv.c\
+		get_next_line.c	main.c			ft_memalloc.c		ft_memcpy.c\
+		ft_memdel.c		ft_putstr.c			ft_putendl.c\
+		ft_putstr_fd.c	ft_realloc.c	ft_strchr.c			ft_strdup.c\
+		ft_strequ.c		ft_strjoin.c	ft_strlen.c			ft_strncat.c\
+		ft_strncmp.c	ft_strnequ.c	ft_strnew.c			ft_strpos.c\
+		ft_strsplit.c	ft_strsub.c		ft_strtrim.c		ft_putendl_fd.c\
+		ft_putchar_fd.c	ft_putchar.c	ft_bzero.c			ft_strcat.c\
+		ft_isblank.c\
 
-normal: $(NAME)
+HDR = 	ft_sh.h		get_next_line.h
 
-makelib:
-	@git submodule update --init -q
-	@make -f Makefile -C libft
+OBJ = $(SRCS:.c=.o)
 
-cleanlib:
-	@git submodule update --init -q
-	@make -f Makefile -C libft clean
-
-fcleanlib:
-	@git submodule update --init -q
-	@make -f Makefile -C libft fclean
+all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) -o $(NAME) $(INC_PATH) $^ $(LKFLAGS)
+	gcc -Wall -Wextra -Werror $(OBJ) -o $(NAME)
 
-%.o: %.c
-	$(CC) $(LFLAGS) -g -o $@ -c $< $(CFLAGS)
+%.o: ./srcs/qq%.c
+	@gcc -c -Wall -Wextra -Werror $(SRCS)
 
-clean: cleanlib
+clean:
 	@rm -rf $(OBJ)
 
-fclean: clean fcleanlib mrproper
+fclean: clean
+	@rm -f $(NAME)
 
-re: fclean fcleanlib all
+re: fclean all
 
-.PHONY: clean mrproper
-
-mrproper: clean
-	@rm -rf $(NAME)
+.PHONY: all c clean fclean re
