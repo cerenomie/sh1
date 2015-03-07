@@ -6,7 +6,7 @@
 /*   By: fteuber <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/01 16:15:03 by fteuber           #+#    #+#             */
-/*   Updated: 2015/03/04 15:20:23 by fteuber          ###   ########.fr       */
+/*   Updated: 2015/03/07 17:37:46 by fteuber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,20 @@ int			delete(t_env *lst, int pos)
 	free (delete->str);
 	free (delete);
 	return (0);
+}
+
+t_env		*search(t_env *lst, int value)
+{
+	t_env	*tmp;
+
+	tmp = lst;
+	while (tmp != NULL)
+	{
+		if (tmp->val == value)
+		{
+			return (tmp);
+		}
+		tmp = tmp->next;
+	}
+	return (NULL);
 }
